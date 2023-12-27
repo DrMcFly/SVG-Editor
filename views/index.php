@@ -43,7 +43,11 @@ session_start();
         <svg height="500px" width="500px" margin="10px" id="canvas" xmlns="http://www.w3.org/2000/svg"></svg>  
     </div>
 
-    <p id="distance" class="distance"></p>
+    <p id="info" class="distance"></p>
+    <?php 
+    // echo "Setting1: {$_SESSION["Setting1"]}<br>";
+    // echo "Setting2: {$_SESSION["Setting2"]}<br>";
+    ?>
     <input type="range" min="1" max="20" value="5" class="slider" id="snapRange">
     
     <div id="mouseCoords" class="mouseBox">(0, 0)</div>

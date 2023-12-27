@@ -1,8 +1,24 @@
 <?php
 
-session_start();
+    session_start();
 
-echo $_SESSION["Setting1"];
+    
+    // if($_POST["Setting1"] != "") {
+    //     $_SESSION["Setting1"] = $_POST["Setting1"];
+    // }
+    
+    $_SESSION["Setting1"] = $_POST["Setting1"];
+    $_SESSION["Setting2"] = $_POST["Setting2"];
+
+    echo "SESSION: {$_SESSION["Setting1"]}<br>";
+    echo "POST: {$_POST["Setting1"]}<br>";
+    if (isset($_POST["Setting1"])) {
+        echo "isset";
+    }
+
+    function saveVar() {
+        $_SESSION["Setting1"] = $_POST["Setting1"];
+    }
 
 ?>
 
@@ -14,16 +30,21 @@ echo $_SESSION["Setting1"];
     <title>Settings</title>
 </head>
 <body>
-    <form action="settings.php" method="post">
-    <input type="checkbox" name="Setting1">Setting #1</input> <br>
-    <input type="checkbox" name="Setting2">Setting #2</input> <br>
+    <a href="/views/index.php"><button>Back</button></a>
+    <form  method="post" action="settings.php">
     
-    <input type="submit"> <br>
-    <?php 
-    echo "Setting1: {$_POST["Setting1"]}<br>";
-    $_SESSION["Setting1"] = $_POST["Setting1"];
-    echo "Setting2: {$_POST["Setting2"]}<br>";
-    ?>
+    <input type="checkbox" name="Setting1" <?php if ($_SESSION["Setting1"] == 'on') echo "checked"; ?>>Setting #1</input> <br>
+    <input type="checkbox" name="Setting2" <?php if ($_SESSION["Setting2"] == 'on') echo "checked"; ?>>Setting #2</input> <br>
+    <!-- <input type="checkbox" name="Setting2" >Setting #2</input> <br> -->
+    <input type="submit" value="Apply"><br>
+    <?php ?>
     </form>
 </body>
+
+<script>
+
+</script>
+
+<script src="/scripts/settings.js"></script>
+
 </html>

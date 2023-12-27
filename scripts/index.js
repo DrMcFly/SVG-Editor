@@ -1,4 +1,4 @@
-var coords = [];
+let coords = [];
 var canvas = document.getElementById('canvas');
 let mouseCoords = document.getElementById('mouseCoords');
 mouseCoords.style.display = 'block'; //Remove in version 1.2
@@ -14,7 +14,7 @@ let c = 0;
 let r = 0;
 let p = 0;
 
-canvas.addEventListener('mousemove', function(event) {
+document.addEventListener('mousemove', function(event) {
     var x = Math.trunc(event.clientX - view.left); 
     var y = Math.trunc(event.clientY - view.top); 
      
@@ -23,8 +23,22 @@ canvas.addEventListener('mousemove', function(event) {
     mouseCoords.style.left = (x + 65) + 'px';
     mouseCoords.style.top = (y - 25) + 'px';
     mouseCoords.innerHTML = '(' + x + ', ' + y + ')';
+
+    if(event.clientX - view.left > 500 || event.clientX - view.left < 0) {
+        mouseCoords.style.display = "none";
+    } else if(event.clientY - view.top > 500 || event.clientY - view.top < 0) {
+        mouseCoords.style.display = "none";
+    } else {
+        mouseCoords.style.display = "block";
+    }
 });
 
+
+canvas.addEventListener('click', function (event) {
+
+
+
+});
 
 
 function clearCanvas() {
@@ -105,7 +119,8 @@ function addLine(mouseX, mouseY) {
     let initialy = y;
     
     canvas.appendChild(line.cloneNode(true));
-    canvas.appendChild(line)
+    // canvas.appendChild(circle.cloneNode(true));
+    canvas.appendChild(line);
     line.setAttribute("x1", x);
     line.setAttribute("y1", y);
     line.setAttribute("x2", x);
@@ -135,49 +150,30 @@ function addLine(mouseX, mouseY) {
             y = event.clientY - view.top; 
         }
 
-        console.log((Math.atan((y - initialy) / (x - initialx))) * (180 / 3.14159));
-
-
-
-
-
         let d = Math.sqrt((initialy - (event.clientY - view.top)) ** 2 + (initialx - (event.clientX - view.left)) ** 2);
-        document.getElementById('distance').innerHTML = "D: " + Math.trunc(d);
-
-        
-        // path.setAttribute('M' + initialx + ' ' + initialy + ' A' + d + ' ' + d + ', 0' + '0 0' + (initialy - (event.clientY - view.top) + ' ' + (initialx - (event.clientX - view.left))));
-
-        // circle.setAttribute("r", d);
-        // circle.setAttribute("d1", 90);
-        // circle.setAttribute("d2", 340); //Math.cos(x / d)
-        // console.log(Math.cos(x / d));
-
-
-        // console.log("D: " + snapVal.value);
-
-
-        // console.log(initialy - (event.clientY - rect.top));
-        // console.log(initialx - (event.clientX - rect.left));
-        
+        document.getElementById('info').innerHTML = "D: " + Math.trunc(d) + ", θ: " + Math.abs(Math.trunc(Math.atan((initialy - y)/(initialx - x)) * (180 / 3.14159)));
     
         line.setAttribute("x2", x);
         line.setAttribute("y2", y);
 
         
-        
+        // canvas.appendChild(circle);
+        // circle.setAttribute("cx", x);
+        // circle.setAttribute("cy", y);
+        // circle.setAttribute("r", 3);
+        // circle.setAttribute("style", "stroke: blue; stroke-width:2; fill-opacity: 0");
+
+        // canvas.appendChild(circle);
+        // circle.setAttribute("r", 50);
+
         canvas.addEventListener('click', function(e){
         
             canvas.removeEventListener('mousemove', handler);
         
         });
-        
-        // canvas.addEventListener('click', function(event) {
-            
-        //     addLine(event.clientX, event.clientY);
-        //     canvas.removeEventListener('click', arguments.callee);
-        
-        // });
     }
+
+    coords.push({line: l, x1: initialx, y1: initialy, x2: x, y2: y});
 
     canvas.addEventListener('mousemove', handler);
 
@@ -228,7 +224,7 @@ function addCircle(mouseX, mouseY) {
     var handler = function(event) {
 
         let d = Math.sqrt((initialy - (event.clientY - view.top)) ** 2 + (initialx - (event.clientX - view.left)) ** 2);
-        document.getElementById('distance').innerHTML = "R: " + Math.trunc(d);
+        document.getElementById('info').innerHTML = "R: " + Math.trunc(d);
         
         // console.log("D: " + snapVal.value);
 
@@ -300,7 +296,7 @@ function addRectangle(mouseX, mouseY) {
     var handler = function(event) {
 
         let d = Math.sqrt((initialy - (event.clientY - view.top)) ** 2 + (initialx - (event.clientX - view.left)) ** 2);
-        document.getElementById('distance').innerHTML = "C: " + Math.trunc(d);
+        document.getElementById('info').innerHTML = "C: " + Math.trunc(d);
         
         // console.log("D: " + snapVal.value);
 
@@ -387,7 +383,7 @@ function addPath(mouseX, mouseY) {
     var handler = function(event) {
 
         let d = Math.sqrt((initialy - (event.clientY - view.top)) ** 2 + (initialx - (event.clientX - view.left)) ** 2);
-        document.getElementById('distance').innerHTML = "C: " + Math.trunc(d);
+        document.getElementById('info').innerHTML = "C: " + Math.trunc(d);
         
         // console.log("D: " + snapVal.value);
         
