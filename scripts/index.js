@@ -100,7 +100,66 @@ function downloadInnerSVG(elId, mimeType) {
     
 }
 
+function select(N) {
+    
 
+    
+    console.log("selected: " + N);
+    let selected = canvas.getElementById('line ' + (N));
+    // selected.addEventListener('mousedown', function(e){
+    //     selected.setAttribute('style', 'stroke:black; stroke-width:3');
+    // });
+    
+    // canvas.appendChild(circle.cloneNode(true));
+
+    console.log(coords);
+    // console.log(N -1);
+
+    function createDraggableCircle(x, y) {
+        canvas.appendChild(circle);
+        // circle.setAttribute('cx', coords[(N - 1)][x]);
+        // circle.setAttribute('cy', coords[(N - 1)][y]);
+        circle.setAttribute('r', 4);
+        circle.setAttribute('style', 'stroke:blue; stroke-width: 1.5; cursor:all-scroll; fill:white;');
+        circle.setAttribute('id', 'editHolder' + N);
+
+    }
+
+    createDraggableCircle("x1", "y1");
+    circle1 = document.getElementById('editHolder1');
+    createDraggableCircle("x2", "y2");
+    circle2 = document.getElementById('editHolder2');
+    
+    circle1.setAttribute('cx', coords[(N - 1)]['x1']);
+    circle1.setAttribute('cy', coords[(N - 1)]['x2']);
+
+    circle2.setAttribute('cx', coords[(N - 1)]['x2']);
+    circle2.setAttribute('cy', coords[(N - 1)]['y2']);
+    
+
+    selected.setAttribute('style', 'stroke:blue; stroke-width:2');
+
+    function handler(event) {
+        circle.setAttribute('cx', event.clientX - view.left);
+        circle.setAttribute('cy', event.clientY - view.top);
+        selected.setAttribute('x1', event.clientX - view.left);
+        selected.setAttribute('y1', event.clientY - view.top);            
+        // console.log("drag");
+
+        canvas.addEventListener('mouseup', function(event){
+            canvas.removeEventListener('mousemove', handler);
+        });
+    }
+
+    circle.addEventListener('mousedown', function(event){
+        canvas.addEventListener('mousemove', handler);
+        
+    });
+
+    
+    
+
+}
 
 function lineButton() {
     canvas.addEventListener('click', function(event) {
@@ -119,12 +178,13 @@ function addLine(mouseX, mouseY) {
     let initialy = y;
     
     canvas.appendChild(line.cloneNode(true));
-    // canvas.appendChild(circle.cloneNode(true));
     canvas.appendChild(line);
     line.setAttribute("x1", x);
     line.setAttribute("y1", y);
     line.setAttribute("x2", x);
     line.setAttribute("y2", y);
+
+    coords.push({"line": l, "x1": initialx, "y1": initialy, "x2": 0, "y2": 0});
 
     if (document.getElementById('construction').checked == true) {
         line.setAttribute("id", 'constructionLine ' + l);
@@ -134,6 +194,7 @@ function addLine(mouseX, mouseY) {
         line.setAttribute("id", 'line ' + l);
         line.setAttribute("stroke-dasharray", "0");
         line.setAttribute('style', 'stroke:rgb(100,100,100); stroke-width:2');
+        
     }
 
 
@@ -156,26 +217,27 @@ function addLine(mouseX, mouseY) {
         line.setAttribute("x2", x);
         line.setAttribute("y2", y);
 
+        coords[0]["x2"] = x;
+        coords[0]["y2"] = y;
         
-        // canvas.appendChild(circle);
-        // circle.setAttribute("cx", x);
-        // circle.setAttribute("cy", y);
-        // circle.setAttribute("r", 3);
-        // circle.setAttribute("style", "stroke: blue; stroke-width:2; fill-opacity: 0");
 
-        // canvas.appendChild(circle);
-        // circle.setAttribute("r", 50);
-
-        canvas.addEventListener('click', function(e){
+        canvas.addEventListener('mousedown', function(e){
         
             canvas.removeEventListener('mousemove', handler);
         
         });
+        
+        
     }
 
-    coords.push({line: l, x1: initialx, y1: initialy, x2: x, y2: y});
+    
 
     canvas.addEventListener('mousemove', handler);
+
+    // canvas.addEventListener('mousemove', function(e) {
+        line.setAttribute('onclick', 'select(' + l +')');
+    //     this.removeEventListener('mousemove', arguments.callee);
+    // });
 
 }
 
@@ -196,7 +258,7 @@ function addCircle(mouseX, mouseY) {
     c += 1;
     var x = mouseX - view.left;
     var y = mouseY - view.top;
-    let r = 0;
+    // let r = 0;
     let initialx = x;
     let initialy = y;
 

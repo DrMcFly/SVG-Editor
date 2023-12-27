@@ -64,6 +64,12 @@ svg {
     background-color: white;
 }
 
+svg line {
+    margin: 10px;
+    padding: 10px;
+    
+}
+
 .sidebar {
     position: fixed;
     top: 0;
