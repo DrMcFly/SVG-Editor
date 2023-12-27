@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +23,7 @@
         <p>Edit</p>
         <p>Selection</p>
         <p>View</p>
-        <img src="/images/settings-3110.png">
+        <a href="/views/settings.php"><img src="/images/settings-3110.png"></a>
         <input type="text" id="name">
         <input type="checkbox" id="construction">
     </div>
