@@ -16,7 +16,7 @@
         <p>Edit</p>
         <p>Selection</p>
         <p>View</p>
-        <img src="/settings-3110.png">
+        <img src="/images/settings-3110.png">
         <input type="text" id="name">
         <input type="checkbox" id="construction">
     </div>
