@@ -15,11 +15,6 @@
     if (isset($_POST["Setting1"])) {
         echo "isset";
     }
-
-    function saveVar() {
-        $_SESSION["Setting1"] = $_POST["Setting1"];
-    }
-
 ?>
 
 <!DOCTYPE html>

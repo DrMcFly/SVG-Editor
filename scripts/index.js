@@ -2,7 +2,7 @@ let coords = [];
 var canvas = document.getElementById('canvas');
 let mouseCoords = document.getElementById('mouseCoords');
 mouseCoords.style.display = 'block'; //Remove in version 1.2
-let line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+let line = document.createElementNS('http://www.w3.org/2000/svg', 'line'); //change document to canvas?
 let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 let rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 let path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -193,7 +193,7 @@ function addLine(mouseX, mouseY) {
     } else {
         line.setAttribute("id", 'line ' + l);
         line.setAttribute("stroke-dasharray", "0");
-        line.setAttribute('style', 'stroke:rgb(100,100,100); stroke-width:2');
+        line.setAttribute('style', 'stroke:rgb(255,255,255); stroke-width:2');
         
     }
 
@@ -277,7 +277,7 @@ function addCircle(mouseX, mouseY) {
     } else {
         circle.setAttribute("id", 'circle ' + l);
         circle.setAttribute("stroke-dasharray", "0");
-        circle.setAttribute('style', 'stroke:rgb(100,100,100); stroke-width:2; fill-opacity: 0;');
+        circle.setAttribute('style', 'stroke:rgb(255,255,255); stroke-width:2; fill-opacity: 0;');
     }
     
     
@@ -352,7 +352,7 @@ function addRectangle(mouseX, mouseY) {
     } else {
         rect.setAttribute("id", 'Rect ' + l);
         rect.setAttribute("stroke-dasharray", "0");
-        rect.setAttribute('style', 'stroke:rgb(100,100,100); stroke-width:2; fill-opacity: 0;');
+        rect.setAttribute('style', 'stroke:rgb(255,255,255); stroke-width:2; fill-opacity: 0;');
     }
 
     var handler = function(event) {

@@ -1,10 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 html {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(233, 232, 232);
 }
 
-.topbar {
+/* .topbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -13,22 +16,22 @@ html {
     background-color: rgb(228, 228, 228);
     border-bottom: 1px solid rgb(207, 207, 207);
     z-index: 100;
-}
+} */
 
-.topbar p {
+/* .topbar p {
     float: left;
     font-size: 14px;
     padding: 10px;
     margin: 0;
     display: block;
-}
+} */
 
-.topbar p:hover {
+/* .topbar p:hover {
     background-color: rgb(207, 207, 207);
     cursor: pointer;
-}
+} */
 
-.topbar img {
+/* .topbar img {
     width: 20px;
     height: 20px;
     padding: 7.5px;
@@ -48,29 +51,23 @@ html {
     float: right;
     margin-top: 7.5px;
     margin-right: 50px;
-}
+} */
 
 svg {
     position: fixed;
-    border-style: solid;
-    border-color:rgb(207, 207, 207);
-    border-width: 1px;
-    /* border-radius: 5px; */
+    border-radius: 5px;
     left: 0;
-    margin-left: 50px;
-    margin-top: 20px;
-    /* margin-top: 100px; */
     cursor: crosshair;
-    background-color: white;
+    background-color: #333333;
 }
 
-svg line {
+/* svg line {
     margin: 10px;
     padding: 10px;
     
-}
+} */
 
-.sidebar {
+/* .sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -79,7 +76,7 @@ svg line {
     background-color: rgb(228, 228, 228);
     margin-top: 35px;
     border-right: 1px solid rgb(207, 207, 207);
-}
+} */
 
 .sidebar button {
     width: 25px;
