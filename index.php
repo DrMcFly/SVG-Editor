@@ -25,6 +25,7 @@ session_start();
         <p class="float-left py-[5px] px-[8px] m-0 block text-white hover:bg-gray-700 cursor-pointer">View</p>
         <input type="text" id="name">
         <input type="checkbox" id="construction">
+        <input type="checkbox" id="light_mode/dark_mode">
         <input type="range" min="1" max="20" value="5" class="slider mt-2" id="snapRange">
     </div>
 

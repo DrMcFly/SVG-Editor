@@ -9,10 +9,20 @@ let path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 let view = canvas.getBoundingClientRect(); 
 let contextMenu = document.getElementById('contextMenu');
 let snapVal = document.getElementById('snapRange');
+let lightMode = document.getElementById('light_mode/dark_mode');
 let l = 0;
 let c = 0;
 let r = 0;
 let p = 0;
+
+
+function init_canvas() 
+{
+    
+}
+
+
+
 
 document.addEventListener('mousemove', function(event) {
     var x = Math.trunc(event.clientX - view.left); 
