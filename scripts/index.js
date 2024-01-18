@@ -18,7 +18,21 @@ let p = 0;
 
 function init_canvas() 
 {
-    
+    canvas.appendChild(line.cloneNode(true));
+    canvas.appendChild(line);
+    line.setAttribute('style', 'stroke:grey;');
+    line.setAttribute("x1", 1000);
+    line.setAttribute("y1", 0);
+    line.setAttribute("x2", 1000);
+    line.setAttribute("y2", 2000);
+
+    canvas.appendChild(line.cloneNode(true));
+    canvas.appendChild(line);
+    line.setAttribute('style', 'stroke:grey;');
+    line.setAttribute("x1", 0);
+    line.setAttribute("y1", 1000);
+    line.setAttribute("x2", 2000);
+    line.setAttribute("y2", 1000);
 }
 
 

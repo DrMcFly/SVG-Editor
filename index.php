@@ -38,6 +38,7 @@ session_start();
         <button class="w-12 text-white hover:bg-gray-700 cursor-pointer float-left p-4 rounded-md" onclick="clearCanvas()"><img src="/images/Eraser.png"></button>
         <a class="w-12 text-white hover:bg-gray-700 cursor-pointer float-left p-4 rounded-md" onclick="downloadInnerSVG('container')" id="download"><button><img src="/images/Download.svg"></button></a>
         <button class="w-12 text-white hover:bg-gray-700 cursor-pointer float-left p-4 rounded-md"><img class="w-[100%] h-[100%]" src="/images/Settings.svg"></button>
+        <button class="w-12 text-white hover:bg-gray-700 cursor-pointer float-left p-4 rounded-md" onclick="init_canvas()"><img src="/images/Path.svg"></button>
     </div>
 
     <div id="container">
